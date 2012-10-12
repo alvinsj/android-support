@@ -56,7 +56,7 @@ public class QuickUI {
 
         AlertDialog.Builder dlgBuilder = new AlertDialog.Builder(context);
         final Context _context = context;
-        dlgBuilder.setMessage("Service not available.\nPlease check your network settings.").setCancelable(false)
+        dlgBuilder.setMessage("Please turn on your Wi-Fi or Mobile Data connection").setCancelable(false)
                 .setNegativeButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();

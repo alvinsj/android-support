@@ -47,6 +47,8 @@ public abstract class AppConfig {
     protected static AppConfig instance = null;
     protected SharedPreferences theSharedPreferences;
     
+	public static boolean betaMode = false;
+    
     public abstract boolean isDevVersion();
 
     public static File cacheFolder(Context context) {
@@ -152,7 +154,8 @@ public abstract class AppConfig {
     protected abstract File getCacheFolder(Context context);
     
     public static void log(String where, String message){
-    	Log.i(where, message);
+    	if(betaMode)
+    		Log.e(where, message);
     }
     
 }
