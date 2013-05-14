@@ -31,7 +31,10 @@
 package com.stepsdk.android.util;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 import android.view.Display;
 
 public class ScreenUtil {
@@ -76,4 +79,24 @@ public class ScreenUtil {
     public enum Orientation {
         UNKNOWN, PORTRAIT, LANDSCAPE, SQUARE
     }
+    
+	public static float convertDpToPixel(float dp, Context context){
+	    Resources resources = context.getResources();
+	    DisplayMetrics metrics = resources.getDisplayMetrics();
+	    float px = dp * (metrics.densityDpi / 160f);
+	    return px;
+	}
+
+	public static float convertPixelsToDp(float px, Context context){
+	    Resources resources = context.getResources();
+	    DisplayMetrics metrics = resources.getDisplayMetrics();
+	    float dp = px / (metrics.densityDpi / 160f);
+	    return dp;
+	}
+	
+	public static boolean isTablet(Context context) {
+		return (context.getResources().getConfiguration().screenLayout & 
+        	    Configuration.SCREENLAYOUT_SIZE_MASK) > 
+        	        Configuration.SCREENLAYOUT_SIZE_LARGE;
+	}
 }
