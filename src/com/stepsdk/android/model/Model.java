@@ -30,9 +30,6 @@
  */
 package com.stepsdk.android.model;
 
-import java.util.Observable;
-import java.util.Observer;
-
 import com.stepsdk.android.pubsub.Callback;
 import com.stepsdk.android.pubsub.PubSub;
 

@@ -32,8 +32,6 @@ package com.stepsdk.android.pubsub;
 
 import java.util.HashMap;
 import java.util.Observable;
-import java.util.Observer;
-
 
 public class PubSub extends Observable{
 	public Observable observarable;

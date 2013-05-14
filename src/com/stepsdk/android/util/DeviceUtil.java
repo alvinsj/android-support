@@ -30,7 +30,6 @@
  */
 package com.stepsdk.android.util;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 import android.telephony.TelephonyManager;
