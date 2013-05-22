@@ -31,6 +31,7 @@
 package com.stepsdk.android.util;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.view.Display;
@@ -94,4 +95,10 @@ public class DeviceUtil {
         Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         return display.getWidth();
     } 
+    
+    public static boolean checkPermission(Context context, String permission){
+        int res = context.checkCallingOrSelfPermission(permission);
+        return (res == PackageManager.PERMISSION_GRANTED);            
+    }
+    
 }

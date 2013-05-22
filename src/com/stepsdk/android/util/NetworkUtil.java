@@ -50,10 +50,15 @@ public class NetworkUtil {
         public NetworkDownException() {
             super("Service not avaiable.");
         }
+        
+        public NetworkDownException(String message) {
+        	super(message);
+        }
     }
 
     public static boolean isOnline(Context context) {
         try {
+
             ConnectivityManager cm = (ConnectivityManager)context
                     .getSystemService(Context.CONNECTIVITY_SERVICE);
             return cm.getActiveNetworkInfo().isConnectedOrConnecting();
