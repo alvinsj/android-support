@@ -33,6 +33,7 @@ package com.stepsdk.android.util;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.view.Display;
 import android.view.WindowManager;
@@ -42,10 +43,18 @@ import java.net.URLEncoder;
 
 public class DeviceUtil {
     public static String getDeviceId(Context context) {
+    	
         String serviceName = Context.TELEPHONY_SERVICE;
         TelephonyManager tele = (TelephonyManager)context.getSystemService(
                 serviceName);
-        return tele.getDeviceId();
+        String deviceId = tele.getDeviceId();
+        
+        if(deviceId == null || deviceId.isEmpty()){
+        	deviceId = Secure.getString(context.getContentResolver(),
+                    Secure.ANDROID_ID);
+        }
+        
+        return deviceId;
     }
 
     public static String getDeviceString() {

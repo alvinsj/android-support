@@ -30,8 +30,9 @@
  */
 package com.stepsdk.android.event;
 
+import java.util.Observable;
 import java.util.Observer;
 
-public abstract class EventObserver implements Observer{
-
+public interface EventObserver{
+	public abstract void update(EventObservable observable, Event event);
 }

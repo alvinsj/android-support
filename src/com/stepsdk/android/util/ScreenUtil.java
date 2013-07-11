@@ -34,8 +34,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.LinearGradient;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+
+import com.stepsdk.android.support.R;
 
 public class ScreenUtil {
     public static Orientation getScreenOrientation(Activity _activity) {
@@ -95,8 +101,9 @@ public class ScreenUtil {
 	}
 	
 	public static boolean isTablet(Context context) {
-		return (context.getResources().getConfiguration().screenLayout & 
-        	    Configuration.SCREENLAYOUT_SIZE_MASK) > 
-        	        Configuration.SCREENLAYOUT_SIZE_LARGE;
+		LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LinearLayout ll = (LinearLayout)li.inflate(R.layout.screensize, null);
+		View v = ll.findViewById(R.id.screen_size_phone);
+		return v == null;
 	}
 }

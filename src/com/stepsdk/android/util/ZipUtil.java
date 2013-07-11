@@ -33,7 +33,7 @@ public class ZipUtil {
 
   	      ZipEntry ze = null; 
   	      while ((ze = zin.getNextEntry()) != null) { 
-  	        Log.e("Decompress", "Unzipping " + ze.getName()); 
+  	        //Log.e("Decompress", "Unzipping " + ze.getName()); 
 
   	        if(ze.isDirectory()) { 
   	          _dirChecker(ze.getName()); 
