@@ -30,10 +30,13 @@
  */
 package com.stepsdk.android.event;
 
+import android.os.Bundle;
+
 public class Event {
     protected String mName;
     public Object data;
     public Object[] datum;
+    public Bundle extras = new Bundle();
     private int mId;
     
     public static int eventCount = 1;
@@ -76,6 +79,15 @@ public class Event {
     public Event withObject(Object obj){
         data = obj;
         return this;
+    }
+    
+    public Event withExtras(Bundle bundle){
+    	extras = bundle;
+    	return this;
+    }
+    
+    public Bundle getExtras(){
+    	return extras;
     }
     
     public int getId(){
