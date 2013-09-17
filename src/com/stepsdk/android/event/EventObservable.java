@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Observable;
+import java.util.Observer;
 
 public abstract class EventObservable {
 	private HashMap<String, CustomObservable> mObservables = new HashMap<String, CustomObservable>();
@@ -32,6 +33,11 @@ public abstract class EventObservable {
 		public void addObserver(EventObserver observer){
 			mObservers.add(observer);
 		}
+		
+		public synchronized void deleteObserver(EventObserver observer) {
+			mObservers.remove(observer);
+		}
+		
 	}
 
 	public void notifyObservers(Event event) {
@@ -52,6 +58,14 @@ public abstract class EventObservable {
 		}
 	}
 	
+	public synchronized void deleteObserver(String eventName, EventObserver eventObserver) {
+		if( events() != null && events().contains(eventName)){
+			if(!mObservables.containsKey(eventName))
+				mObservables.put(eventName, new CustomObservable());
+			CustomObservable o = mObservables.get(eventName);
+			o.deleteObserver(eventObserver);
+		}
+	}	
 	private boolean mChanged;
 	public void setChanged(){
 		mChanged = true;
